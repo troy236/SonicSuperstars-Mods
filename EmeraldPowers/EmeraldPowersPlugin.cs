@@ -19,11 +19,9 @@ public class EmeraldPowersPlugin : BasePlugin {
             Log.LogError("Failed to find GameSceneController.Player_ResetSelectedEmeraldAll");
             return;
         }
-        var postGameSceneController_Player_ForceResetInductionEmerald = AccessTools.Method(typeof(EmeraldPowersPlugin), "HookGameScene_Player");
-        harmony.Patch(originalPlayer_ForceResetInductionEmerald, prefix: new HarmonyMethod(postGameSceneController_Player_ForceResetInductionEmerald));
-
-        var postGameSceneController_Player_ResetSelectedEmeraldAll = AccessTools.Method(typeof(EmeraldPowersPlugin), "HookGameScene_Player");
-        harmony.Patch(originalPlayer_ResetSelectedEmeraldAll, prefix: new HarmonyMethod(postGameSceneController_Player_ResetSelectedEmeraldAll));
+        var postGameSceneController_Player_= AccessTools.Method(typeof(EmeraldPowersPlugin), "HookGameScene_Player");
+        harmony.Patch(originalPlayer_ForceResetInductionEmerald, prefix: new HarmonyMethod(postGameSceneController_Player_));
+        harmony.Patch(originalPlayer_ResetSelectedEmeraldAll, prefix: new HarmonyMethod(postGameSceneController_Player_));
     }
 
     public static bool HookGameScene_Player() {
