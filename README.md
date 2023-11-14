@@ -16,6 +16,9 @@ This also works in some other locations such as the DRILL sections in Golden Car
 
 This does not prevent the game removing your Emerald Power when hit by a enemy
 
+# Always On Music
+Stops the game turning off music/sound effects while in the background
+
 # Installation
 1. Download BepInEx Bleeding Edge build - https://builds.bepinex.dev/projects/bepinex_be
 2. Download the latest BepInEx Artifact selecting the zip with the tag `BepInEx Unity (IL2CPP) for Windows (x64) games`
