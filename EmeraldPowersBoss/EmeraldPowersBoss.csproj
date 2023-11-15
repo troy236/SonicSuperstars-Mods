@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <AssemblyName>EmeraldPowers</AssemblyName>
+    <AssemblyName>EmeraldPowersBoss</AssemblyName>
     <Description>Stops the game removing Emerald Powers when entering a Boss room</Description>
     <Version>1.0.0</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -11,7 +11,7 @@
       https://api.nuget.org/v3/index.json;
       https://nuget.bepinex.dev/v3/index.json;
     </RestoreAdditionalProjectSources>
-    <RootNamespace>EmeraldPowers</RootNamespace>
+    <RootNamespace>EmeraldPowersBoss</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

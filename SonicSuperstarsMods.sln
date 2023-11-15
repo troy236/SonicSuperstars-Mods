@@ -5,11 +5,13 @@ VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DebugView", "DebugView\DebugView.csproj", "{9C425F46-20CB-46F1-92C5-19AFAE7F049A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmeraldPowers", "EmeraldPowers\EmeraldPowers.csproj", "{1E2A4D43-E5A1-4456-A65A-3A8A3B94F32C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmeraldPowersBoss", "EmeraldPowersBoss\EmeraldPowersBoss.csproj", "{1E2A4D43-E5A1-4456-A65A-3A8A3B94F32C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpeedTracker", "SpeedTracker\SpeedTracker.csproj", "{4F29C182-781B-4ABA-AEF3-988EEE0F580B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlwaysOnMusic", "AlwaysOnMusic\AlwaysOnMusic.csproj", "{D6289732-6EB0-4FB3-90FF-E93B4319D665}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlwaysOnMusic", "AlwaysOnMusic\AlwaysOnMusic.csproj", "{D6289732-6EB0-4FB3-90FF-E93B4319D665}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmeraldPowersMusic", "EmeraldPowersMusic\EmeraldPowersMusic.csproj", "{306A5544-D767-472D-A9D2-1031FA17371F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{D6289732-6EB0-4FB3-90FF-E93B4319D665}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6289732-6EB0-4FB3-90FF-E93B4319D665}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6289732-6EB0-4FB3-90FF-E93B4319D665}.Release|Any CPU.Build.0 = Release|Any CPU
+		{306A5544-D767-472D-A9D2-1031FA17371F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{306A5544-D767-472D-A9D2-1031FA17371F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{306A5544-D767-472D-A9D2-1031FA17371F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{306A5544-D767-472D-A9D2-1031FA17371F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -3,9 +3,9 @@ using BepInEx.Unity.IL2CPP;
 using HarmonyLib;
 using Orion;
 
-namespace EmeraldPowers;
+namespace EmeraldPowersBoss;
 [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
-public class EmeraldPowersPlugin : BasePlugin {
+public class EmeraldPowersBossPlugin : BasePlugin {
 
     public override void Load() {
         var harmony = new Harmony("Superstars.EmeraldPowers");
@@ -19,7 +19,7 @@ public class EmeraldPowersPlugin : BasePlugin {
             Log.LogError("Failed to find GameSceneController.Player_ResetSelectedEmeraldAll");
             return;
         }
-        var postGameSceneController_Player_= AccessTools.Method(typeof(EmeraldPowersPlugin), "HookGameScene_Player");
+        var postGameSceneController_Player_= AccessTools.Method(typeof(EmeraldPowersBossPlugin), "HookGameScene_Player");
         harmony.Patch(originalPlayer_ForceResetInductionEmerald, prefix: new HarmonyMethod(postGameSceneController_Player_));
         harmony.Patch(originalPlayer_ResetSelectedEmeraldAll, prefix: new HarmonyMethod(postGameSceneController_Player_));
     }
