@@ -3,21 +3,27 @@ This repository contains all the Mods I have written for Sonic Superstars
 
 All the Mods use the BepInEx modding framework
 
+# Always On Music
+Stops the game turning off music/sound effects while in the background
+
+# Emerald Powers Boss
+Stops the game turning off/deselecting your Emerald Power when entering a Boss Arena/beating the boss.
+
+# Emerald Powers Music
+Blocks the Emerald Power music. This includes Super form
+
+# Emerald Powers Music No Long SE
+Blocks the Emerald Power music and any long start-up effects. This is particularly noticeable with Vision/Slow/Ivy
+
 # Debug View
 Enables the Debug View showing Player Position/Memory Usage/Scene Name and more 
 
 # Speed Tracker
 Enables the Speed Tracker showing the Players speed
 
-# Emerald Powers
-Stops the game turning off/deselecting your Emerald Power when entering a Boss Arena/beating the boss.
-
 This also works in some other locations such as the DRILL sections in Golden Carnival Act 1.
 
 This does not prevent the game removing your Emerald Power when hit by a enemy
-
-# Always On Music
-Stops the game turning off music/sound effects while in the background
 
 # Installation
 1. Download the latest BepInEx Bleeding Edge Build Artifact - https://builds.bepinex.dev/projects/bepinex_be - Select the zip with the tag `BepInEx Unity (IL2CPP) for Windows (x64) games`
