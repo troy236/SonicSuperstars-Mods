@@ -13,10 +13,8 @@ Enables the Debug View showing Player Position/Memory Usage/Scene Name and more
 Stops the game turning off/deselecting your Emerald Power when entering a Boss Arena/beating the boss.
 
 # Emerald Powers Music
-Blocks the Emerald Power music. This includes Super form
-
-# Emerald Powers Music No Long SE
-Blocks the Emerald Power music and any long start-up effects. This is particularly noticeable with Vision/Slow/Ivy
+Blocks the Emerald Power music.
+Modify `EmeraldMusicConfig.txt` to configure which Emerald Power sounds play
 
 # Speed Tracker
 Enables the Speed Tracker showing the Players speed
