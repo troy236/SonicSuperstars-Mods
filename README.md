@@ -6,6 +6,9 @@ All the Mods use the BepInEx modding framework
 # Always On Music
 Stops the game turning off music/sound effects while in the background
 
+# Debug View
+Enables the Debug View showing Player Position/Memory Usage/Scene Name and more 
+
 # Emerald Powers Boss
 Stops the game turning off/deselecting your Emerald Power when entering a Boss Arena/beating the boss.
 
@@ -14,9 +17,6 @@ Blocks the Emerald Power music. This includes Super form
 
 # Emerald Powers Music No Long SE
 Blocks the Emerald Power music and any long start-up effects. This is particularly noticeable with Vision/Slow/Ivy
-
-# Debug View
-Enables the Debug View showing Player Position/Memory Usage/Scene Name and more 
 
 # Speed Tracker
 Enables the Speed Tracker showing the Players speed
