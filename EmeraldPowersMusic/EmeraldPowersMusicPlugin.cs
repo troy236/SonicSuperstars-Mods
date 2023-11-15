@@ -29,6 +29,8 @@ public class EmeraldPowersMusicPlugin : BasePlugin {
 
 
     public static bool HookSoundManager_Play(SoundSourceTypes type, int cue) {
+        //Comment this region out to have the sound effects play
+        #region Emerald Long Sound Effects
         if (type == SoundSourceTypes.Player) {
             switch (cue) {
                 case 30411: //Avatar
@@ -41,6 +43,7 @@ public class EmeraldPowersMusicPlugin : BasePlugin {
                     return false;
             }
         }
+        #endregion
         if (type == SoundSourceTypes.BgmJingle) {
             switch (cue) {
                 case 90039: //Avatar
