@@ -16,6 +16,11 @@ This also works in some other locations such as the DRILL sections in Golden Car
 
 This does not prevent the game removing your Emerald Power when hit by a enemy
 
+# Emerald Powers Cancellable
+Adds the ability to cancel Emerald Powers while in-use.
+
+This acts the same as cancelling Super Form
+
 # Emerald Powers Music
 Blocks the Emerald Power music.
 Modify `EmeraldMusicConfig.txt` to configure which Emerald Power sounds play
