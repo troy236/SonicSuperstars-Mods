@@ -12,6 +12,10 @@ Enables the Debug View showing Player Position/Memory Usage/Scene Name and more
 # Emerald Powers Boss
 Stops the game turning off/deselecting your Emerald Power when entering a Boss Arena/beating the boss.
 
+This also works in some other locations such as the DRILL sections in Golden Carnival Act 1.
+
+This does not prevent the game removing your Emerald Power when hit by a enemy
+
 # Emerald Powers Music
 Blocks the Emerald Power music.
 Modify `EmeraldMusicConfig.txt` to configure which Emerald Power sounds play
@@ -19,9 +23,8 @@ Modify `EmeraldMusicConfig.txt` to configure which Emerald Power sounds play
 # Speed Tracker
 Enables the Speed Tracker showing the Players speed
 
-This also works in some other locations such as the DRILL sections in Golden Carnival Act 1.
-
-This does not prevent the game removing your Emerald Power when hit by a enemy
+# Spin Dash Fix
+Fixes the Spin dash charge at higher framerates
 
 # Installation
 1. Download the latest BepInEx Bleeding Edge Build Artifact - https://builds.bepinex.dev/projects/bepinex_be - Select the zip with the tag `BepInEx Unity (IL2CPP) for Windows (x64) games`
