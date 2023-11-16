@@ -38,6 +38,9 @@ public class SpeedTrackerPlugin : BasePlugin {
             if (_debugPlayerSpeedValue == null) return;
             var gameSceneControllerInstance = GameSceneController.Instance;
             if (gameSceneControllerInstance == null) return;
+            //Prevents crashes? Doesn't track Special/Bonus stage/Warp game
+            //if (gameSceneControllerInstance.activePlayerList == null || gameSceneControllerInstance.activePlayerList.Count == 0) return;
+            //var playerBase = gameSceneControllerInstance.activePlayerList[0];
             var playerBase = gameSceneControllerInstance.GetPlayer(0);
             if (playerBase != null && playerBase != _playerBase) {
                 _playerBase = playerBase;

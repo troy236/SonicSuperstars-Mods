@@ -19,9 +19,9 @@ public class AlwaysOnMusicPlugin : BasePlugin {
             Log.LogError("Failed to find SysPauseManager.OnApplicationFocus");
             return;
         }
-        var post_OnApplicationFocus = AccessTools.Method(typeof(AlwaysOnMusicPlugin), "Hook_OnApplicationFocus");
-        harmony.Patch(originalSoundManager_OnApplicationFocus, prefix: new HarmonyMethod(post_OnApplicationFocus));
-        harmony.Patch(originalSysPauseManager_OnApplicationFocus, prefix: new HarmonyMethod(post_OnApplicationFocus));
+        var pre_OnApplicationFocus = AccessTools.Method(typeof(AlwaysOnMusicPlugin), "Hook_OnApplicationFocus");
+        harmony.Patch(originalSoundManager_OnApplicationFocus, prefix: new HarmonyMethod(pre_OnApplicationFocus));
+        harmony.Patch(originalSysPauseManager_OnApplicationFocus, prefix: new HarmonyMethod(pre_OnApplicationFocus));
     }
 
     public static bool Hook_OnApplicationFocus() {

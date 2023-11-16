@@ -23,10 +23,10 @@ public class EmeraldPowersMusicPlugin : BasePlugin {
             Log.LogError("Failed to find SoundManager.ChangeVolumeAll");
             return;
         }
-        var postSoundManager_Play2 = AccessTools.Method(typeof(EmeraldPowersMusicPlugin), "HookSoundManager_Play");
-        var postSoundManager_ChangeVolumeAll = AccessTools.Method(typeof(EmeraldPowersMusicPlugin), "HookSoundManager_ChangeVolumeAll");
-        harmony.Patch(originalSoundManager_Play, prefix: new HarmonyMethod(postSoundManager_Play2));
-        harmony.Patch(originalSoundManager_ChangeVolumeAll, prefix: new HarmonyMethod(postSoundManager_ChangeVolumeAll));
+        var preSoundManager_Play2 = AccessTools.Method(typeof(EmeraldPowersMusicPlugin), "HookSoundManager_Play");
+        var preSoundManager_ChangeVolumeAll = AccessTools.Method(typeof(EmeraldPowersMusicPlugin), "HookSoundManager_ChangeVolumeAll");
+        harmony.Patch(originalSoundManager_Play, prefix: new HarmonyMethod(preSoundManager_Play2));
+        harmony.Patch(originalSoundManager_ChangeVolumeAll, prefix: new HarmonyMethod(preSoundManager_ChangeVolumeAll));
     }
 
     public static bool HookSoundManager_Play(SoundSourceTypes type, int cue) {
