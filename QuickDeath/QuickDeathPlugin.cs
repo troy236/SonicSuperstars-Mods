@@ -26,12 +26,15 @@ public class QuickDeathPlugin : BasePlugin {
             Log.LogInfo($"Quick Restart combo assigned to: {_config.QuickRestartEnumCombo}");
         }
         var originalPlayerMain2D_LateUpdate = AccessTools.Method(typeof(PlayerMain2D), "LateUpdate");
+        var originalPlayerBase3D_UpdateMove = AccessTools.Method(typeof(PlayerBase3D), "UpdateMove");
         if (originalPlayerMain2D_LateUpdate == null) {
             Log.LogError("Failed to find PlayerMain2D.LateUpdate");
             return;
         }
         var post_LateUpdate = AccessTools.Method(typeof(QuickDeathPlugin), "Hook_LateUpdate");
+        var pre_UpdateMove = AccessTools.Method(typeof(QuickDeathPlugin), "Hook_UpdateMove");
         harmony.Patch(originalPlayerMain2D_LateUpdate, postfix: new HarmonyMethod(post_LateUpdate));
+        harmony.Patch(originalPlayerBase3D_UpdateMove, prefix: new HarmonyMethod(pre_UpdateMove));
     }
 
     public static void Hook_LateUpdate(PlayerMain2D __instance) {
@@ -56,6 +59,27 @@ public class QuickDeathPlugin : BasePlugin {
         if (_config.QuickRestartEnumCombo != PlatformPad.Button.None) {
             if ((onButton & _config.QuickRestartEnumCombo) == _config.QuickRestartEnumCombo) {
                 GameSceneControllerBase.ReStart();
+                _Triggered = true;
+                _timer = new System.Threading.Timer(ResetTriggered, null, System.TimeSpan.FromSeconds(3), System.Threading.Timeout.InfiniteTimeSpan);
+            }
+        }
+    }
+
+    public static void Hook_UpdateMove(PlayerBase3D __instance) {
+        if (__instance.playerID == -1) return;
+        if (_Triggered) {
+            return;
+        }
+        var inputPlayerController = __instance.inputPlyCtlr;
+        if (inputPlayerController == null) return;
+        var playerPad = inputPlayerController.playerPad;
+        if (playerPad == null) return;
+        var nowPad = playerPad.nowPad;
+        if (nowPad == null) return;
+        var onButton = nowPad.On;
+        if (_config.QuickDeathEnumCombo != PlatformPad.Button.None) {
+            if ((onButton & _config.QuickDeathEnumCombo) == _config.QuickDeathEnumCombo) {
+                __instance.crntAction = PlayerBase.EActionIndex.ActDead;
                 _Triggered = true;
                 _timer = new System.Threading.Timer(ResetTriggered, null, System.TimeSpan.FromSeconds(3), System.Threading.Timeout.InfiniteTimeSpan);
             }
