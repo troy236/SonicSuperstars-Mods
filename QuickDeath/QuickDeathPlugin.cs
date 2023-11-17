@@ -31,6 +31,10 @@ public class QuickDeathPlugin : BasePlugin {
             Log.LogError("Failed to find PlayerMain2D.LateUpdate");
             return;
         }
+        if (originalPlayerBase3D_UpdateMove == null) {
+            Log.LogError("Failed to find PlayerBase3D.UpdateMove");
+            return;
+        }
         var post_LateUpdate = AccessTools.Method(typeof(QuickDeathPlugin), "Hook_LateUpdate");
         var pre_UpdateMove = AccessTools.Method(typeof(QuickDeathPlugin), "Hook_UpdateMove");
         harmony.Patch(originalPlayerMain2D_LateUpdate, postfix: new HarmonyMethod(post_LateUpdate));
