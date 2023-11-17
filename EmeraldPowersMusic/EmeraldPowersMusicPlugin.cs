@@ -8,11 +8,11 @@ namespace EmeraldPowersMusic;
 [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
 public class EmeraldPowersMusicPlugin : BasePlugin {
     private static bool _blockChangeVolume = false;
-    private static EmeraldConfig _config;
+    private static EmeraldMusicConfig _config;
 
     public override void Load() {
         var harmony = new Harmony("Superstars.EmeraldPowersMusic");
-        _config = EmeraldConfig.Load();
+        _config = EmeraldMusicConfig.Load();
         var originalSoundManager_Play = AccessTools.Method(typeof(SoundManager), "Play", new[] { typeof(SoundSourceTypes), typeof(string), typeof(int), typeof(SoundSourceSettings) });
         var originalSoundManager_ChangeVolumeAll = AccessTools.Method(typeof(SoundManager), "ChangeVolumeAll");
         if (originalSoundManager_Play == null) {

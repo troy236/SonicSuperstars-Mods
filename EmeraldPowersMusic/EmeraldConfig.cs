@@ -4,7 +4,7 @@ using System.Reflection;
 using System.Text.Json;
 
 namespace EmeraldPowersMusic;
-public class EmeraldConfig {
+public class EmeraldMusicConfig {
     public bool AvatarMusic { get; set; }
     public bool BulletMusic { get; set; }
     public bool VisionMusic { get; set; }
@@ -19,17 +19,17 @@ public class EmeraldConfig {
     public bool SlowStartupSound { get; set; }
     public bool VisionStartupSound { get; set; }
 
-    public static EmeraldConfig Load() {
+    public static EmeraldMusicConfig Load() {
         try {
             string path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "EmeraldMusicConfig.txt");
-            if (!File.Exists(path)) return new EmeraldConfig();
-            return JsonSerializer.Deserialize<EmeraldConfig>(File.ReadAllBytes(path));
+            if (!File.Exists(path)) return new EmeraldMusicConfig();
+            return JsonSerializer.Deserialize<EmeraldMusicConfig>(File.ReadAllBytes(path));
         }
         catch (Exception ex) {
             Console.WriteLine("Failed to read EmeraldMusicConfig.txt");
             Console.WriteLine(ex.ToString());
             Console.WriteLine("Using default values");
         }
-        return new EmeraldConfig();
+        return new EmeraldMusicConfig();
     }
 }
