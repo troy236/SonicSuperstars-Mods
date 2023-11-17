@@ -46,15 +46,19 @@ public class QuickDeathPlugin : BasePlugin {
         var nowPad = playerPad.nowPad;
         if (nowPad == null) return;
         var onButton = nowPad.On;
-        if ((onButton & _config.QuickDeathEnumCombo) == _config.QuickDeathEnumCombo) {
-            __instance.SetSandwichedDead();
-            _Triggered = true;
-            _timer = new System.Threading.Timer(ResetTriggered, null, System.TimeSpan.FromSeconds(3), System.Threading.Timeout.InfiniteTimeSpan);
+        if (_config.QuickDeathEnumCombo != PlatformPad.Button.None) {
+            if ((onButton & _config.QuickDeathEnumCombo) == _config.QuickDeathEnumCombo) {
+                __instance.SetSandwichedDead();
+                _Triggered = true;
+                _timer = new System.Threading.Timer(ResetTriggered, null, System.TimeSpan.FromSeconds(3), System.Threading.Timeout.InfiniteTimeSpan);
+            }
         }
-        else if ((onButton & _config.QuickRestartEnumCombo) == _config.QuickRestartEnumCombo) {
-            GameSceneControllerBase.ReStart();
-            _Triggered = true;
-            _timer = new System.Threading.Timer(ResetTriggered, null, System.TimeSpan.FromSeconds(3), System.Threading.Timeout.InfiniteTimeSpan);
+        if (_config.QuickRestartEnumCombo != PlatformPad.Button.None) {
+            if ((onButton & _config.QuickRestartEnumCombo) == _config.QuickRestartEnumCombo) {
+                GameSceneControllerBase.ReStart();
+                _Triggered = true;
+                _timer = new System.Threading.Timer(ResetTriggered, null, System.TimeSpan.FromSeconds(3), System.Threading.Timeout.InfiniteTimeSpan);
+            }
         }
     }
 

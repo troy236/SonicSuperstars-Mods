@@ -36,6 +36,7 @@ public class QuickDeathConfig {
                     }
                 }
             }
+            return quickDeathConfig;
         }
         catch (Exception ex) {
             log.LogError("Failed to read QuickDeathConfig.txt");
