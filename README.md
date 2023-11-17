@@ -25,6 +25,14 @@ This acts the same as cancelling Super Form
 Blocks the Emerald Power music.
 Modify `EmeraldMusicConfig.txt` to configure which Emerald Power sounds play
 
+# Quick Death
+Adds a customisable Quick Death/Restart button combo.
+You can have both a Quick Death and Quick Restart combo or just one of them.
+
+Defaults:
+ZL,ZR,L,R for Quick Death
+ZL,ZR,RDown,RLeft for Quick Restart
+
 # Speed Tracker
 Enables the Speed Tracker showing the Players speed
 
