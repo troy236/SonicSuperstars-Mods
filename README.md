@@ -36,6 +36,9 @@ Defaults:
 ZL,ZR,L,R for Quick Death
 ZL,ZR,RDown,RLeft for Quick Restart
 
+# Remove Induction Emerald
+Removes the context-sensitive Emerald usage prompt
+
 # Speed Tracker
 Enables the Speed Tracker showing the Players speed
 
