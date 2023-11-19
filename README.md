@@ -25,6 +25,9 @@ This acts the same as cancelling Super Form
 Blocks the Emerald Power music.
 Modify `EmeraldMusicConfig.txt` to configure which Emerald Power sounds play
 
+# Press Factory Disable Drone
+Disables the Drone. It will only follow you and not charge up
+
 # Quick Death
 Adds a customisable Quick Death/Restart button combo.
 You can have both a Quick Death and Quick Restart combo or just one of them.
