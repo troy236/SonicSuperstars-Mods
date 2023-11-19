@@ -7,11 +7,12 @@ using static Orion.SoundSourceSettings;
 namespace EmeraldPowersMusic;
 [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
 public class EmeraldPowersMusicPlugin : BasePlugin {
+    private static Harmony _harmony;
     private static bool _blockChangeVolume = false;
     private static EmeraldMusicConfig _config;
 
     public override void Load() {
-        var harmony = new Harmony("Superstars.EmeraldPowersMusic");
+        _harmony = new Harmony("Superstars.EmeraldPowersMusic");
         _config = EmeraldMusicConfig.Load();
         var originalSoundManager_Play = AccessTools.Method(typeof(SoundManager), "Play", new[] { typeof(SoundSourceTypes), typeof(string), typeof(int), typeof(SoundSourceSettings) });
         var originalSoundManager_ChangeVolumeAll = AccessTools.Method(typeof(SoundManager), "ChangeVolumeAll");
@@ -25,8 +26,8 @@ public class EmeraldPowersMusicPlugin : BasePlugin {
         }
         var preSoundManager_Play2 = AccessTools.Method(typeof(EmeraldPowersMusicPlugin), "HookSoundManager_Play");
         var preSoundManager_ChangeVolumeAll = AccessTools.Method(typeof(EmeraldPowersMusicPlugin), "HookSoundManager_ChangeVolumeAll");
-        harmony.Patch(originalSoundManager_Play, prefix: new HarmonyMethod(preSoundManager_Play2));
-        harmony.Patch(originalSoundManager_ChangeVolumeAll, prefix: new HarmonyMethod(preSoundManager_ChangeVolumeAll));
+        _harmony.Patch(originalSoundManager_Play, prefix: new HarmonyMethod(preSoundManager_Play2));
+        _harmony.Patch(originalSoundManager_ChangeVolumeAll, prefix: new HarmonyMethod(preSoundManager_ChangeVolumeAll));
     }
 
     public static bool HookSoundManager_Play(SoundSourceTypes type, int cue) {

@@ -8,12 +8,13 @@ using OriPlayer;
 namespace QuickDeath;
 [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
 public class QuickDeathPlugin : BasePlugin {
+    private static Harmony _harmony;
     private static QuickDeathConfig _config;
     private static bool _Triggered = false;
     private static System.Threading.Timer _timer;
 
     public override void Load() {
-        var harmony = new Harmony("Superstars.QuickDeath");
+        _harmony = new Harmony("Superstars.QuickDeath");
         _config = QuickDeathConfig.Load(Log);
         if (_config.QuickDeathEnumCombo == PlatformPad.Button.None && _config.QuickRestartEnumCombo == PlatformPad.Button.None) {
             Log.LogInfo("No button combo assigned. Exiting");
@@ -37,8 +38,8 @@ public class QuickDeathPlugin : BasePlugin {
         }
         var post_LateUpdate = AccessTools.Method(typeof(QuickDeathPlugin), "Hook_LateUpdate");
         var pre_UpdateMove = AccessTools.Method(typeof(QuickDeathPlugin), "Hook_UpdateMove");
-        harmony.Patch(originalPlayerMain2D_LateUpdate, postfix: new HarmonyMethod(post_LateUpdate));
-        harmony.Patch(originalPlayerBase3D_UpdateMove, prefix: new HarmonyMethod(pre_UpdateMove));
+        _harmony.Patch(originalPlayerMain2D_LateUpdate, postfix: new HarmonyMethod(post_LateUpdate));
+        _harmony.Patch(originalPlayerBase3D_UpdateMove, prefix: new HarmonyMethod(pre_UpdateMove));
     }
 
     public static void Hook_LateUpdate(PlayerMain2D __instance) {

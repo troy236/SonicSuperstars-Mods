@@ -52,7 +52,6 @@ public class SpeedTrackerPlugin : BasePlugin {
         }
     }
 
-
     public static void HookGameScene_Instance(GameSceneController __result) {
         try {
             if (!_firstRun) return;

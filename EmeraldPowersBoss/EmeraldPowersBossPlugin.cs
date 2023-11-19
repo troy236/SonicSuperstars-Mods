@@ -6,9 +6,10 @@ using Orion;
 namespace EmeraldPowersBoss;
 [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
 public class EmeraldPowersBossPlugin : BasePlugin {
+    private static Harmony _harmony;
 
     public override void Load() {
-        var harmony = new Harmony("Superstars.EmeraldPowers");
+        _harmony = new Harmony("Superstars.EmeraldPowers");
         var originalPlayer_ForceResetInductionEmerald = AccessTools.Method(typeof(GameSceneController), "Player_ForceResetInductionEmerald");
         var originalPlayer_ResetSelectedEmeraldAll = AccessTools.Method(typeof(GameSceneController), "Player_ResetSelectedEmeraldAll");
         if (originalPlayer_ForceResetInductionEmerald == null) {
@@ -20,8 +21,8 @@ public class EmeraldPowersBossPlugin : BasePlugin {
             return;
         }
         var preGameSceneController_Player_= AccessTools.Method(typeof(EmeraldPowersBossPlugin), "HookGameScene_Player");
-        harmony.Patch(originalPlayer_ForceResetInductionEmerald, prefix: new HarmonyMethod(preGameSceneController_Player_));
-        harmony.Patch(originalPlayer_ResetSelectedEmeraldAll, prefix: new HarmonyMethod(preGameSceneController_Player_));
+        _harmony.Patch(originalPlayer_ForceResetInductionEmerald, prefix: new HarmonyMethod(preGameSceneController_Player_));
+        _harmony.Patch(originalPlayer_ResetSelectedEmeraldAll, prefix: new HarmonyMethod(preGameSceneController_Player_));
     }
 
     public static bool HookGameScene_Player() {

@@ -2,17 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <AssemblyName>EmeraldPowersCancellable</AssemblyName>
-    <Description>Allows cancelling Emerald Powers while in-use</Description>
-    <Version>1.0.1</Version>
+    <AssemblyName>PressFactoryDisableDrone</AssemblyName>
+    <Description>Removes the Drone from Press Factory Act 2</Description>
+    <Version>1.0.0</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
     <RestoreAdditionalProjectSources>
       https://api.nuget.org/v3/index.json;
       https://nuget.bepinex.dev/v3/index.json;
     </RestoreAdditionalProjectSources>
-    <RootNamespace>EmeraldPowersCancellable</RootNamespace>
-    <AssemblyVersion>1.0.1.0</AssemblyVersion>
+    <RootNamespace>PressFactoryDisableDrone</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

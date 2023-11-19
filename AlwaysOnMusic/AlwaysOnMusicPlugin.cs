@@ -6,9 +6,10 @@ using Orion;
 namespace AlwaysOnMusic;
 [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
 public class AlwaysOnMusicPlugin : BasePlugin {
+    private static Harmony _harmony;
 
     public override void Load() {
-        var harmony = new Harmony("Superstars.AlwaysOnMusic");
+        _harmony = new Harmony("Superstars.AlwaysOnMusic");
         var originalSoundManager_OnApplicationFocus = AccessTools.Method(typeof(SoundManager), "OnApplicationFocus");
         var originalSysPauseManager_OnApplicationFocus = AccessTools.Method(typeof(SysPauseManager), "OnApplicationFocus");
         if (originalSoundManager_OnApplicationFocus == null) {
@@ -20,8 +21,8 @@ public class AlwaysOnMusicPlugin : BasePlugin {
             return;
         }
         var pre_OnApplicationFocus = AccessTools.Method(typeof(AlwaysOnMusicPlugin), "Hook_OnApplicationFocus");
-        harmony.Patch(originalSoundManager_OnApplicationFocus, prefix: new HarmonyMethod(pre_OnApplicationFocus));
-        harmony.Patch(originalSysPauseManager_OnApplicationFocus, prefix: new HarmonyMethod(pre_OnApplicationFocus));
+        _harmony.Patch(originalSoundManager_OnApplicationFocus, prefix: new HarmonyMethod(pre_OnApplicationFocus));
+        _harmony.Patch(originalSysPauseManager_OnApplicationFocus, prefix: new HarmonyMethod(pre_OnApplicationFocus));
     }
 
     public static bool Hook_OnApplicationFocus() {

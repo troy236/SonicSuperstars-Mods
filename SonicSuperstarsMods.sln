@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpinDashFix", "SpinDashFix\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmeraldPowersCancellable", "EmeraldPowersCancellable\EmeraldPowersCancellable.csproj", "{A4444FB4-EF29-42CF-A2F7-4EBF91BD3832}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickDeath", "QuickDeath\QuickDeath.csproj", "{A95D5C69-9393-4053-A847-5970E9B4EDA2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuickDeath", "QuickDeath\QuickDeath.csproj", "{A95D5C69-9393-4053-A847-5970E9B4EDA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PressFactoryDisableDrone", "PressFactoryDisableDrone\PressFactoryDisableDrone.csproj", "{297031F0-776B-41F8-B102-92B5EA40A7EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{A95D5C69-9393-4053-A847-5970E9B4EDA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A95D5C69-9393-4053-A847-5970E9B4EDA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A95D5C69-9393-4053-A847-5970E9B4EDA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{297031F0-776B-41F8-B102-92B5EA40A7EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{297031F0-776B-41F8-B102-92B5EA40A7EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{297031F0-776B-41F8-B102-92B5EA40A7EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{297031F0-776B-41F8-B102-92B5EA40A7EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
