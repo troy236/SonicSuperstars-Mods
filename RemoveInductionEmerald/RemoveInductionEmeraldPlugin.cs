@@ -9,7 +9,7 @@ public class RemoveInductionEmeraldPlugin : BasePlugin {
     private static Harmony _harmony;
 
     public override void Load() {
-        _harmony = new Harmony("Superstars.PressFactoryNoDrone");
+        _harmony = new Harmony("Superstars.RemoveInductionEmerald");
         var originalPlayerMain2D_UpDateFixedInductionEmerald = AccessTools.Method(typeof(PlayerMain2D), "UpDateFixedInductionEmerald");
         if (originalPlayerMain2D_UpDateFixedInductionEmerald == null) {
             Log.LogError("Failed to find PlayerMain2D.UpDateFixedInductionEmerald");
