@@ -35,13 +35,15 @@ public class SpeedTrackerPlugin : BasePlugin {
 
     public static void UpdatePlayerBase(object state) {
         try {
-            if (_debugPlayerSpeedValue == null) return;
+            if (_debugPlayerSpeedValue is null) return;
             var gameSceneControllerInstance = GameSceneController.Instance;
-            if (gameSceneControllerInstance == null) return;
+            if (gameSceneControllerInstance is null) return;
             var playerBase = gameSceneControllerInstance.LeaderPlayer;
-            if (playerBase != null && playerBase != _playerBase) {
+            if (playerBase is not null && (playerBase.WasCollected || playerBase != _playerBase)) {
                 _playerBase = playerBase;
                 _debugPlayerSpeedValue.targetPl = _playerBase;
+                //_debugPlayerSpeedValue.rollSpeed = _playerBase.ActDB.RollTopSpeed;
+                //_debugPlayerSpeedValue.topSpeed = _playerBase.ActDB.TopSpeed;
             }
         }
         catch (Exception ex) {
@@ -52,13 +54,16 @@ public class SpeedTrackerPlugin : BasePlugin {
     public static void HookGameScene_Instance(GameSceneController __result) {
         try {
             if (!_firstRun) return;
-            if (__result == null) return;
+            if (__result is null) return;
             _firstRun = false;
             _playerBase = __result.GetPlayer(0);
             var go = new GameObject();
             _debugPlayerSpeedValue = go.AddComponent<DebugPlayerSpeedValue>();
             Object.DontDestroyOnLoad(go);
             _debugPlayerSpeedValue.targetPl = _playerBase;
+            //Accessing ActDB fails. Value changes depending on speed shoes/super
+            //_debugPlayerSpeedValue.rollSpeed = _playerBase.ActDB.RollTopSpeed;
+            //_debugPlayerSpeedValue.topSpeed = _playerBase.ActDB.TopSpeed;
 
         }
         catch (Exception ex) {

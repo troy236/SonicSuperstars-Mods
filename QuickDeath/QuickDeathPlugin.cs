@@ -48,11 +48,11 @@ public class QuickDeathPlugin : BasePlugin {
             return;
         }
         var inputPlayerController = __instance.inputPlyCtlr;
-        if (inputPlayerController == null) return;
+        if (inputPlayerController is null) return;
         var playerPad = inputPlayerController.playerPad;
-        if (playerPad == null) return;
+        if (playerPad is null) return;
         var nowPad = playerPad.nowPad;
-        if (nowPad == null) return;
+        if (nowPad is null) return;
         var onButton = nowPad.On;
         if (_config.QuickDeathEnumCombo != PlatformPad.Button.None) {
             if ((onButton & _config.QuickDeathEnumCombo) == _config.QuickDeathEnumCombo) {
@@ -76,11 +76,11 @@ public class QuickDeathPlugin : BasePlugin {
             return;
         }
         var inputPlayerController = __instance.inputPlyCtlr;
-        if (inputPlayerController == null) return;
+        if (inputPlayerController is null) return;
         var playerPad = inputPlayerController.playerPad;
-        if (playerPad == null) return;
+        if (playerPad is null) return;
         var nowPad = playerPad.nowPad;
-        if (nowPad == null) return;
+        if (nowPad is null) return;
         var onButton = nowPad.On;
         if (_config.QuickDeathEnumCombo != PlatformPad.Button.None) {
             if ((onButton & _config.QuickDeathEnumCombo) == _config.QuickDeathEnumCombo) {
