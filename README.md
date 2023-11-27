@@ -28,7 +28,7 @@ Modify `EmeraldMusicConfig.txt` to configure which Emerald Power sounds play
 # Knuckles Glide Speed
 Allows customising Knuckles Glide Speed
 
-Modify KnucklesGlideSpeedConfig.txt to configure
+Modify `KnucklesGlideSpeedConfig.txt` to configure
 
 Default: Glide Speed being your X Speed at the start of the glide.
 
