@@ -25,6 +25,15 @@ This acts the same as cancelling Super Form
 Blocks the Emerald Power music.
 Modify `EmeraldMusicConfig.txt` to configure which Emerald Power sounds play
 
+# Knuckles Glide Speed
+Allows customising Knuckles Glide Speed
+
+Modify `KnucklesGlideSpeedConfig.txt` to configure
+
+Default: Glide Speed being your X Speed at the start of the glide.
+
+With the default the minimum speed is 30 as shown on Speed Tracker even if you were moving slower than that at the start of the glide
+
 # Press Factory Disable Drone
 Disables the Drone. It will only follow you and not charge up
 
