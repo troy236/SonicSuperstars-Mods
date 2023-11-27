@@ -11,6 +11,7 @@ namespace KnucklesGlideSpeed;
 public class KnucklesGlideSpeedConfig {
     public float GlideSpeed { get; set; }
     public bool UseStartXSpeed { get; set; }
+    public bool GlideAcceleration { get; set; }
 
     public static KnucklesGlideSpeedConfig Load(BepInEx.Logging.ManualLogSource log) {
         try {
@@ -30,6 +31,7 @@ public class KnucklesGlideSpeedConfig {
         var knucklesGlideSpeedConfig = new KnucklesGlideSpeedConfig();
         knucklesGlideSpeedConfig.GlideSpeed = 3f;
         knucklesGlideSpeedConfig.UseStartXSpeed = true;
+        knucklesGlideSpeedConfig.GlideAcceleration = false;
         return knucklesGlideSpeedConfig;
     }
 }

@@ -2,6 +2,7 @@
 using BepInEx.Unity.IL2CPP;
 using HarmonyLib;
 using OriPlayerAction;
+using UnityEngine;
 
 namespace KnucklesGlideSpeed;
 [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
@@ -32,7 +33,7 @@ public class KnucklesGlideSpeedPlugin : BasePlugin {
 
     public static void Hook_PlActionJumpUniqueKnuckles_Init(PlActionJumpUniqueKnuckles __instance) {
         if (_config.UseStartXSpeed) {
-            _targetX = System.Math.Max(3f, __instance.OwnerPlyer.VelocityX);
+            _targetX = System.Math.Max(3f, System.Math.Abs(__instance.OwnerPlyer.VelocityX));
         }
         else {
             _targetX = _config.GlideSpeed;
@@ -40,6 +41,12 @@ public class KnucklesGlideSpeedPlugin : BasePlugin {
     }
 
     public static void Hook_PlActionJumpUniqueKnuckles_FixedUpdate(PlActionJumpUniqueKnuckles __instance) {
+        if (_config.GlideAcceleration && (__instance.dirRate is -1 or 1)) {
+            float accelerateValue = 0.6f;
+            accelerateValue *= Time.fixedDeltaTime;
+            accelerateValue += _targetX;
+            _targetX = accelerateValue;
+        }
         __instance.targetVelX = _targetX;
     }
 }
