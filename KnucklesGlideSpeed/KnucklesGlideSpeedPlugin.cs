@@ -41,6 +41,7 @@ public class KnucklesGlideSpeedPlugin : BasePlugin {
     }
 
     public static void Hook_PlActionJumpUniqueKnuckles_FixedUpdate(PlActionJumpUniqueKnuckles __instance) {
+        //Credit to Ryn @WistfulHopes
         if (_config.GlideAcceleration && (__instance.dirRate is -1 or 1)) {
             float accelerateValue = 0.6f;
             accelerateValue *= Time.fixedDeltaTime;
