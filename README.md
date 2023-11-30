@@ -34,6 +34,13 @@ Default: Glide Speed being your X Speed at the start of the glide.
 
 With the default the minimum speed is 30 as shown on Speed Tracker even if you were moving slower than that at the start of the glide
 
+# Player Warp
+Adds the ability to warp to a custom position or cycle through available checkpoints with a button combo
+
+Modify `PlayerWarpConfig.txt` to configure
+
+Default button combo is ZL,ZR,RUp
+
 # Press Factory Disable Drone
 Disables the Drone. It will only follow you and not charge up
 
@@ -47,6 +54,13 @@ ZL,ZR,RDown,RLeft for Quick Restart
 
 # Remove Induction Emerald
 Removes the context-sensitive Emerald usage prompt
+
+# Remove Voxel Player
+Removes the Player Voxel model from Cyber Station
+
+Modify `RemoveVoxelPlayerConfig.txt` to configure
+
+Default is the main Voxel model being removed. Jellyfish/Mouse/Rocket will show
 
 # Speed Tracker
 Enables the Speed Tracker showing the Players speed
