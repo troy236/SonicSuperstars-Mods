@@ -1,5 +1,4 @@
-﻿using System.Threading;
-using System;
+﻿using System;
 using BepInEx;
 using BepInEx.Logging;
 using BepInEx.Unity.IL2CPP;
@@ -16,13 +15,12 @@ public class SpeedTrackerPlugin : BasePlugin {
     private static ManualLogSource _log;
     private static Harmony _harmony;
     private static bool _firstRun = true;
+    private static int _hookCalled = 0;
     private static PlayerBase _playerBase;
-    private static Timer _timer;
     private static DebugPlayerSpeedValue _debugPlayerSpeedValue;
 
     public override void Load() {
         _log = Log;
-        _timer = new Timer(UpdatePlayerBase, null, TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(2));
         _harmony = new Harmony("Superstars.SpeedTracker");
         var originalGameSceneController_Instance = AccessTools.Method(typeof(GameSceneController), "get_Instance");
         if (originalGameSceneController_Instance == null) {
@@ -33,38 +31,32 @@ public class SpeedTrackerPlugin : BasePlugin {
         _harmony.Patch(originalGameSceneController_Instance, postfix: new HarmonyMethod(postGameSceneController_Instance));
     }
 
-    public static void UpdatePlayerBase(object state) {
+    public static void HookGameScene_Instance(GameSceneController __result) {
         try {
-            if (_debugPlayerSpeedValue is null) return;
-            var gameSceneControllerInstance = GameSceneController.Instance;
-            if (gameSceneControllerInstance is null) return;
-            var playerBase = gameSceneControllerInstance.LeaderPlayer;
-            if (playerBase is not null && (playerBase.WasCollected || playerBase != _playerBase)) {
-                _playerBase = playerBase;
+            //if (!_firstRun) return;
+            if (__result is null) return;
+            if (_hookCalled++ >= 2400) {
+                _hookCalled = 0;
+                var playerBase = __result.LeaderPlayer;
+                if (playerBase is not null && (playerBase.WasCollected || playerBase != _playerBase)) {
+                    _playerBase = playerBase;
+                    _debugPlayerSpeedValue.targetPl = _playerBase;
+                    //_debugPlayerSpeedValue.rollSpeed = _playerBase.ActDB.RollTopSpeed;
+                    //_debugPlayerSpeedValue.topSpeed = _playerBase.ActDB.TopSpeed;
+                }
+                return;
+            }
+            if (_firstRun) {
+                _firstRun = false;
+                _playerBase = __result.LeaderPlayer;
+                var go = new GameObject();
+                _debugPlayerSpeedValue = go.AddComponent<DebugPlayerSpeedValue>();
+                Object.DontDestroyOnLoad(go);
                 _debugPlayerSpeedValue.targetPl = _playerBase;
+                //Accessing ActDB fails. Value changes depending on speed shoes/super
                 //_debugPlayerSpeedValue.rollSpeed = _playerBase.ActDB.RollTopSpeed;
                 //_debugPlayerSpeedValue.topSpeed = _playerBase.ActDB.TopSpeed;
             }
-        }
-        catch (Exception ex) {
-            _log.LogError($"Error: {ex.ToString()}");
-        }
-    }
-
-    public static void HookGameScene_Instance(GameSceneController __result) {
-        try {
-            if (!_firstRun) return;
-            if (__result is null) return;
-            _firstRun = false;
-            _playerBase = __result.GetPlayer(0);
-            var go = new GameObject();
-            _debugPlayerSpeedValue = go.AddComponent<DebugPlayerSpeedValue>();
-            Object.DontDestroyOnLoad(go);
-            _debugPlayerSpeedValue.targetPl = _playerBase;
-            //Accessing ActDB fails. Value changes depending on speed shoes/super
-            //_debugPlayerSpeedValue.rollSpeed = _playerBase.ActDB.RollTopSpeed;
-            //_debugPlayerSpeedValue.topSpeed = _playerBase.ActDB.TopSpeed;
-
         }
         catch (Exception ex) {
             _log.LogError($"Error: {ex.ToString()}");
