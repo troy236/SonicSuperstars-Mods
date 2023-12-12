@@ -1,4 +1,6 @@
-﻿using arz.input;
+﻿using System.Linq;
+using System.Reflection;
+using arz.input;
 using BepInEx;
 using BepInEx.Unity.IL2CPP;
 using HarmonyLib;
@@ -12,6 +14,7 @@ public class QuickDeathPlugin : BasePlugin {
     private static QuickDeathConfig _config;
     private static bool _Triggered = false;
     private static System.Threading.Timer _timer;
+    private static MethodInfo SetSandwichedDeadMethod;
 
     public override void Load() {
         _harmony = new Harmony("Superstars.QuickDeath");
@@ -26,6 +29,7 @@ public class QuickDeathPlugin : BasePlugin {
         if (_config.QuickRestartEnumCombo != PlatformPad.Button.None) {
             Log.LogInfo($"Quick Restart combo assigned to: {_config.QuickRestartEnumCombo}");
         }
+        SetSandwichedDeadMethod = typeof(PlayerMain2D).GetMethod("SetSandwichedDead");
         var originalPlayerMain2D_LateUpdate = AccessTools.Method(typeof(PlayerMain2D), "LateUpdate");
         var originalPlayerBase3D_UpdateMove = AccessTools.Method(typeof(PlayerBase3D), "UpdateMove");
         if (originalPlayerMain2D_LateUpdate == null) {
@@ -56,7 +60,14 @@ public class QuickDeathPlugin : BasePlugin {
         var onButton = nowPad.On;
         if (_config.QuickDeathEnumCombo != PlatformPad.Button.None) {
             if ((onButton & _config.QuickDeathEnumCombo) == _config.QuickDeathEnumCombo) {
-                __instance.SetSandwichedDead();
+                int parameterLength = SetSandwichedDeadMethod.GetParameters().Length;
+                if (parameterLength == 0) {
+                    SetSandwichedDeadMethod.Invoke(__instance, null);
+                }
+                else {
+                    //Current Dec patch has 1 optional bool parameter. This could support more optional parameters in the future
+                    SetSandwichedDeadMethod.Invoke(__instance, Enumerable.Repeat(System.Type.Missing, parameterLength).ToArray());
+                }
                 _Triggered = true;
                 _timer = new System.Threading.Timer(ResetTriggered, null, System.TimeSpan.FromSeconds(3), System.Threading.Timeout.InfiniteTimeSpan);
             }
