@@ -29,6 +29,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RemoveVoxelPlayer", "Remove
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayerWarp", "PlayerWarp\PlayerWarp.csproj", "{260229FF-8E0B-48B0-AE1F-88984AFD2593}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChangeCharacterBetweenActs", "ChangeCharacterBetweenActs\ChangeCharacterBetweenActs.csproj", "{29FA33A6-F630-4B48-8728-479D5BD67942}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{260229FF-8E0B-48B0-AE1F-88984AFD2593}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{260229FF-8E0B-48B0-AE1F-88984AFD2593}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{260229FF-8E0B-48B0-AE1F-88984AFD2593}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29FA33A6-F630-4B48-8728-479D5BD67942}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29FA33A6-F630-4B48-8728-479D5BD67942}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29FA33A6-F630-4B48-8728-479D5BD67942}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29FA33A6-F630-4B48-8728-479D5BD67942}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
