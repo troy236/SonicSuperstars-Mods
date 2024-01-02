@@ -25,6 +25,7 @@ public class ChangeCharacterBetweenActsPlugin : BasePlugin {
         var originalUIGameMainResult_UpdateOpenResultMenu = AccessTools.Method(typeof(UIGameMainResult), "Update");
         var originalGameSceneControllerBase_IsSeamlessAct = AccessTools.Method(typeof(GameSceneControllerBase), "IsSeamlessAct");
         var originalUIGameMain_OpenMainResultUI = AccessTools.Method(typeof(UIGameMain), "OpenMainResultUI");
+        var originalUIGameMainResult_SetNextActScene = AccessTools.Method(typeof(UIGameMainResult), "SetNextActScene");
         if (originalUIGameMainResult_UpdateOpenResultMenu == null) {
             Log.LogError("Failed to find UIGameMainResult.Update");
             return;
@@ -37,15 +38,17 @@ public class ChangeCharacterBetweenActsPlugin : BasePlugin {
             Log.LogError("Failed to find UIGameMain.OpenMainResultUI");
             return;
         }
+        if (originalUIGameMainResult_SetNextActScene == null) {
+            Log.LogError("Failed to find UIGameMainResult.SetNextActScene");
+            return;
+        }
         var pre_UpdateOpenResultMenu = AccessTools.Method(typeof(ChangeCharacterBetweenActsPlugin), "Hook_Update");
         var pre_IsSeamlessAct = AccessTools.Method(typeof(ChangeCharacterBetweenActsPlugin), "Hook_IsSeamlessAct");
         var pre_OpenMainResultUI = AccessTools.Method(typeof(ChangeCharacterBetweenActsPlugin), "Hook_OpenMainResultUI");
+        var pre_SetNextActScene = AccessTools.Method(typeof(ChangeCharacterBetweenActsPlugin), "Hook_SetNextActScene");
         _harmony.Patch(originalUIGameMainResult_UpdateOpenResultMenu, prefix: new HarmonyMethod(pre_UpdateOpenResultMenu));
         _harmony.Patch(originalGameSceneControllerBase_IsSeamlessAct, postfix: new HarmonyMethod(pre_IsSeamlessAct));
         _harmony.Patch(originalUIGameMain_OpenMainResultUI, prefix: new HarmonyMethod(pre_OpenMainResultUI));
-
-        var originalUIGameMainResult_SetNextActScene = AccessTools.Method(typeof(UIGameMainResult), "SetNextActScene");
-        var pre_SetNextActScene = AccessTools.Method(typeof(ChangeCharacterBetweenActsPlugin), "Hook_SetNextActScene");
         _harmony.Patch(originalUIGameMainResult_SetNextActScene, prefix: new HarmonyMethod(pre_SetNextActScene));
     }
 
