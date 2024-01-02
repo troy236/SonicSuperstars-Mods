@@ -6,6 +6,11 @@ All the Mods use the BepInEx modding framework
 # Always On Music
 Stops the game turning off music/sound effects while in the background
 
+# Change Character Between Acts
+Allows changing character between Acts at the results screen with the B button (or whatever button you assigned backing out of a menu is)
+
+This only applies to Story Mode
+
 # Debug View
 Enables the Debug View showing Player Position/Memory Usage/Scene Name and more 
 
