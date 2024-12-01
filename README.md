@@ -73,6 +73,9 @@ Enables the Speed Tracker showing the Players speed
 # Spin Dash Fix
 Fixes the Spin dash charge at higher framerates
 
+# Super Sonic Dash No Rings
+Removes the 5 Ring cost from the dash attack in Last Story
+
 # Installation
 1. Download the latest BepInEx Bleeding Edge Build Artifact - https://builds.bepinex.dev/projects/bepinex_be - Select the zip with the tag `BepInEx Unity (IL2CPP) for Windows (x64) games`
 2. Unzip the contents to the Sonic Superstars game directory. You can locate this by opening Steam -> Right click Sonic Superstars -> Manage -> Browse local files
